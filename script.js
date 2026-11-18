@@ -24,7 +24,7 @@ const translations = {
     portfolioRab:"Format dokumen RAB",portfolioRabDesc:"Contoh struktur BOQ dan RAB untuk kebutuhan proyek.",
     contactLabel:"KONTAK",contactTitle:"Mari mulai <em>bekerja sama.</em>",contactIntro:"Sedang mencari kandidat administrasi atau membutuhkan bantuan freelance? Silakan hubungi saya untuk membicarakan kebutuhan Anda.",
     panelTitle:"Punya kebutuhan pekerjaan?",panelText:"Ceritakan posisi yang sedang dibuka atau detail pekerjaan freelance yang ingin Anda kerjakan bersama.",chatWhatsapp:"Chat melalui WhatsApp ↗",
-    downloadCv:"Unduh Ringkasan CV ↓",cvNote:"File ringkasan CV akan dibuat otomatis dari informasi di website ini.",rights:"Hak cipta dilindungi.",backTop:"Kembali ke atas ↑"
+    downloadCv:"Unduh Ringkasan CV ↓",cvNote:"Unduh CV profesional dalam format PDF.",rights:"Hak cipta dilindungi.",backTop:"Kembali ke atas ↑"
   },
   en: {
     navAbout:"About",navSkills:"Skills",navExperience:"Experience",navServices:"Services",navPortfolio:"Portfolio",navContact:"Contact Me",
@@ -51,7 +51,7 @@ const translations = {
     portfolioRab:"Construction estimate format",portfolioRabDesc:"An example BOQ and cost-estimate document structure.",
     contactLabel:"CONTACT",contactTitle:"Let's work <em>together.</em>",contactIntro:"Looking for an administrative candidate or freelance support? Get in touch to discuss your requirements.",
     panelTitle:"Have a project or role in mind?",panelText:"Tell me about the open position or freelance task you would like to discuss.",chatWhatsapp:"Chat on WhatsApp ↗",
-    downloadCv:"Download CV Summary ↓",cvNote:"A CV summary file will be generated from the information on this website.",rights:"All rights reserved.",backTop:"Back to top ↑"
+    downloadCv:"Download CV Summary ↓",cvNote:"Download the professional CV in PDF format.",rights:"All rights reserved.",backTop:"Back to top ↑"
   }
 };
 
@@ -80,31 +80,10 @@ navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
 document.getElementById("year").textContent = new Date().getFullYear();
 
 document.getElementById("downloadCv").addEventListener("click", () => {
-  const english = currentLang === "en";
-  const lines = english ? [
-    "KAWIT WIDIA","Administration | Operator | Operations Staff",
-    "Bandung, Indonesia","+62 832-3191-99974","kwidia567@gmail.com","","PROFILE",
-    "Administrative professional with experience in office administration, school operations, and web development. Open to employment and freelance opportunities.",
-    "WORK EXPERIENCE","PT Alsindo Mitra Utama — Office Clerk / Administration",
-    "SDN 130 Sekelimus Batununggal — Operator","PT Simasoreka — Web Developer",
-    "Reported overall work-experience span: 2002–2022. Specific dates by employer were not provided.",
-    "EDUCATION","Senior High School, Science (SMA IPA) — SMUN 3 Bandung, 2002",
-    "SKILLS","Microsoft Office and Excel; Administration; Data Entry and Data Management; Operational Support; Design; Computer Skills",
-    "FREELANCE SERVICES","Excel spreadsheets; Data entry; Virtual administration; BOQ and construction cost-estimate document support"
-  ] : [
-    "KAWIT WIDIA","Administrasi | Operator | Staff Operasional",
-    "Bandung, Indonesia","+62 832-3191-99974","kwidia567@gmail.com","","PROFIL",
-    "Profesional administrasi dengan pengalaman di bidang administrasi perkantoran, operasional sekolah, dan pengembangan web. Terbuka untuk peluang kerja dan freelance.",
-    "PENGALAMAN KERJA","PT Alsindo Mitra Utama — Office Clerk / Administrasi",
-    "SDN 130 Sekelimus Batununggal — Operator","PT Simasoreka — Web Developer",
-    "Rentang pengalaman kerja yang diinformasikan: 2002–2022. Tahun spesifik per perusahaan belum diberikan.",
-    "PENDIDIKAN","SMA IPA — SMUN 3 Bandung, 2002",
-    "KEAHLIAN","Microsoft Office dan Excel; Administrasi; Data Entry dan Pengelolaan Data; Dukungan Operasional; Desain; Kemampuan Komputer",
-    "LAYANAN FREELANCE","Spreadsheet Excel; Input data; Administrasi virtual; Dukungan dokumen BOQ dan RAB konstruksi"
-  ];
-  const blob = new Blob(["\uFEFF" + lines.join("\r\n")], {type:"text/plain;charset=utf-8"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url; a.download = "CV-Kawit-Widia.txt"; a.click();
-  URL.revokeObjectURL(url);
+  const link = document.createElement("a");
+  link.href = "CV-Kawit-Widia.pdf";
+  link.download = "CV-Kawit-Widia.pdf";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
 });
