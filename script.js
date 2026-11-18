@@ -78,12 +78,3 @@ navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
   menuToggle.setAttribute("aria-expanded", "false");
 }));
 document.getElementById("year").textContent = new Date().getFullYear();
-
-document.getElementById("downloadCv").addEventListener("click", () => {
-  const link = document.createElement("a");
-  link.href = "CV-Kawit-Widia.pdf";
-  link.download = "CV-Kawit-Widia.pdf";
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-});
